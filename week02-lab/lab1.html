@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>JS Playground</title>
+<style>
+  body { font-family: sans-serif; max-width: 720px; margin: 24px auto; }
+  #output { background: #eef6f1; border-left: 4px solid #2f6e5b; padding: 14px 18px;
+            white-space: pre-wrap; font-family: monospace; font-size: 15px; min-height: 60px; }
+  .error { color: crimson; }
+</style>
+</head>
+<body>
+
+<h1>🧪 JS Playground</h1>
+<p>ผลลัพธ์ของ console.log ทุกบรรทัดจะมาแสดงในกรอบนี้ (แก้โค้ดแล้วกด Ctrl+S หน้าจะรีเฟรชเอง)</p>
+<pre id="output"></pre>
+
+<script>
+// ===== ตัวช่วยแสดงผล: พาผลของ console.log มาแสดงบนหน้าเว็บ =====
+// (ยังแสดงใน Console ปกติด้วย / ยังไม่ต้องเข้าใจส่วนนี้ สัปดาห์หน้าเรื่อง DOM จะเข้าใจเอง)
+const output = document.getElementById("output");
+const _log = console.log;
+console.log = function(...args) {
+  _log(...args);
+  output.textContent += args.map(a =>
+    typeof a === "object" && a !== null ? JSON.stringify(a) : String(a)
+  ).join(" ") + "\n";
+};
+window.onerror = function(message) {
+  const line = document.createElement("span");
+  line.className = "error";
+  line.textContent = "❌ " + message + "\n";
+  output.appendChild(line);
+};
+// ===== จบตัวช่วย (อย่าลบส่วนบนนี้) =====
+
+// 👇 ลบโค้ดทดลองเก่า แล้ววางตัวอย่างใหม่ใต้บรรทัดนี้ 
+const fullName = "ณัฏฐนันท์ ชื่นใจหวัง";
+let age = 22;
+
+console.log(`สวัสดี ฉันชื่อ ${fullName} อายุ ${age} ปี ปีหน้าจะอายุ ${age + 1} ปี`);
+
+
+</script>
+
+</body>
+</html>
+
+
