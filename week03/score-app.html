@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Score Counter</title>
+<style>
+  body { font-family: sans-serif; text-align: center; padding-top: 40px; }
+  #score { font-size: 64px; margin: 16px; }
+  button { font-size: 20px; padding: 8px 24px; margin: 4px; cursor: pointer; }
+  .pass { color: seagreen; }
+  .fail { color: crimson; }
+</style>
+</head>
+<body>
+
+<h1>แต้มสะสม</h1>
+<div id="score" class="fail">0</div>
+<button id="plus">+1</button>
+<button id="minus">-1</button>
+<button id="reset">เริ่มใหม่</button>
+<p id="status">สะสมให้ถึง 10 แต้ม!</p>
+
+<script>
+let score = 0;
+const scoreEl  = document.getElementById("score");
+const statusEl = document.getElementById("status");
+
+function render() {
+  scoreEl.textContent = score;
+
+  // เปลี่ยนสีตามคะแนนด้วย classList
+  scoreEl.classList.toggle("pass", score >= 10);
+  scoreEl.classList.toggle("fail", score < 10);
+
+  statusEl.textContent = score >= 10
+    ? "🎉 ครบ 10 แต้มแล้ว เก่งมาก!"
+    : `อีก ${10 - score} แต้มจะครบ`;
+}
+
+document.getElementById("plus").addEventListener("click", () => {
+  score++;
+  render();
+});
+
+document.getElementById("minus").addEventListener("click", () => {
+  if (score > 0) score--;
+  render();
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  score = 0;
+  render();
+});
+
+render();  // วาดครั้งแรก
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<style>
+  .highlight { background: yellow; font-weight: bold; }
+  .dark { background: #222; color: #eee; }
+</style>
+</head>
+<body>
+
+<p id="msg">ข้อความทดลอง</p>
+<button id="btn">สลับไฮไลต์</button>
+
+<script>
+const msg = document.getElementById("msg");
+
+msg.classList.add("highlight");      // เพิ่มคลาส
+msg.classList.remove("highlight");   // ถอดคลาส
+console.log(msg.classList.contains("dark"));  // เช็คว่ามีคลาสไหม → false
+
+// toggle: มีก็ถอด ไม่มีก็ใส่ เหมาะกับปุ่มเปิด/ปิด
+document.getElementById("btn").onclick = function() {
+  msg.classList.toggle("highlight");
+};
+</script>
+
+</body>
+</html>

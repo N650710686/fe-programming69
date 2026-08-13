@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="th">
+<body>
+
+<ul id="list">
+  <li>รายการที่มีอยู่แล้ว</li>
+</ul>
+
+<script>
+const list = document.getElementById("list");
+
+// 1) สร้าง element ใหม่ (ยังลอยอยู่ในหน่วยความจำ)
+const newItem = document.createElement("li");
+
+// 2) ใส่เนื้อหา
+newItem.textContent = "รายการใหม่จาก JavaScript";
+
+// 3) นำไปติดท้าย ul ตอนนี้ถึงจะโผล่บนหน้าเว็บ
+list.appendChild(newItem);
+
+// แทรกไว้บนสุดแทนก็ได้
+const topItem = document.createElement("li");
+topItem.textContent = "แทรกไว้บนสุด";
+list.prepend(topItem);
+
+// ลบ element: เลือกแล้วสั่ง remove
+// newItem.remove();
+</script>
+
+</body>
+</html>

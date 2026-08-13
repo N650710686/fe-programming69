@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Handlers Example</title>
+</head>
+<body>
+
+<h1>Welcome to My Website</h1>
+
+<input type="text" id="myInput" placeholder="Type something..." />
+<button id="myButton">Click Me</button>
+
+<script>
+  // Event handler เมื่อ input ถูกเปลี่ยนแปลง
+  document.getElementById("myInput").onchange = function() {
+    alert("Input field has been changed!");
+  };
+
+  // Event handler เมื่อปุ่มถูกคลิก
+  document.getElementById("myButton").onclick = function() {
+    alert("Button was clicked!");
+  };
+</script>
+
+</body>
+</html>
