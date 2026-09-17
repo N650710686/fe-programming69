@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { movies } from '../data';
+import ReviewForm from '../components/ReviewForm';
 
 function MovieDetail() {
   const { id } = useParams();
@@ -8,8 +9,14 @@ function MovieDetail() {
   if (!movie) {
     return (
       <div className="py-20 text-center">
-        <h2 className="text-2xl font-bold text-slate-800">ไม่พบข้อมูลหนังรหัสนี้</h2>
-        <Link to="/movies" className="mt-4 inline-block text-cyan-600 hover:underline">
+        <h2 className="text-2xl font-bold text-slate-800">
+          ไม่พบข้อมูลหนังรหัสนี้
+        </h2>
+
+        <Link
+          to="/movies"
+          className="mt-4 inline-block text-cyan-600 hover:underline"
+        >
           ← กลับไปหน้าหนังทั้งหมด
         </Link>
       </div>
@@ -19,11 +26,23 @@ function MovieDetail() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <div className="rounded-2xl border border-slate-100 bg-white p-8 shadow-md">
+
         <span className="inline-block rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700">
           {movie.genre} ({movie.year})
         </span>
-        <h1 className="mt-4 text-3xl font-bold text-slate-800">{movie.title}</h1>
-        <p className="mt-4 leading-relaxed text-slate-600">{movie.detail}</p>
+
+        <h1 className="mt-4 text-3xl font-bold text-slate-800">
+          {movie.title}
+        </h1>
+
+        <p className="mt-4 leading-relaxed text-slate-600">
+          {movie.detail}
+        </p>
+
+        {/* ฟอร์มรีวิว */}
+        <div className="mt-8 border-t pt-6">
+          <ReviewForm movieTitle={movie.title} />
+        </div>
 
         <div className="mt-8 border-t pt-6">
           <Link
@@ -33,6 +52,7 @@ function MovieDetail() {
             ← กลับไปหน้าหนังทั้งหมด
           </Link>
         </div>
+
       </div>
     </div>
   );
