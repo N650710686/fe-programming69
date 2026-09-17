@@ -51,23 +51,23 @@ function MovieGallery() {
         </div>
     );
 }
-function MovieNav() {
-  const [index, setIndex] = useState(0);
+// function MovieNav() {
+//   const [index, setIndex] = useState(0);
 
-  // วิธีที่ 1: ประกาศฟังก์ชันแยก เหมาะกับ logic ยาว ๆ
-  function handleReset() {
-    setIndex(0);
-  }
+//   // วิธีที่ 1: ประกาศฟังก์ชันแยก เหมาะกับ logic ยาว ๆ
+//   function handleReset() {
+//     setIndex(0);
+//   }
 
-  return (
-    <div className="flex items-center gap-3">
-      {/* วิธีที่ 2: arrow function สั้น ๆ ตรงนั้นเลย */}
-      <button onClick={() => setIndex(index - 1)}>ก่อนหน้า</button>
-      <span className="text-2xl font-bold">{movies[index].title}</span>
-      <button onClick={() => setIndex(index + 1)}>ถัดไป</button>
-      <button onClick={handleReset}>เรื่องแรก</button>
-    </div>
-  );
-}
+//   return (
+//     <div className="flex items-center gap-3">
+//       {/* วิธีที่ 2: arrow function สั้น ๆ ตรงนั้นเลย */}
+//       <button onClick={() => setIndex(index - 1)}>ก่อนหน้า</button>
+//       <span className="text-2xl font-bold">{movies[index].title}</span>
+//       <button onClick={() => setIndex(index + 1)}>ถัดไป</button>
+//       <button onClick={handleReset}>เรื่องแรก</button>
+//     </div>
+//   );
+// }
 
 export default MovieGallery;

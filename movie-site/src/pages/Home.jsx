@@ -4,51 +4,7 @@ import MovieGallery from "../components/MovieGallery";
 import { movies } from "../data";
 
 function Home() {
-  const [watchlist, setWatchlist] = useState([]);
-
-  // เพิ่มหนังต่อท้าย
-  function addToEnd(newMovie) {
-    setWatchlist([...watchlist, newMovie]);
-  }
-
-  // เพิ่มหนังไว้ข้างหน้า
-  function addToStart(newMovie) {
-    setWatchlist([newMovie, ...watchlist]);
-  }
-
-  // ลบหนัง
-  function removeMovie(id) {
-    setWatchlist(watchlist.filter(m => m.id !== id));
-  }
-
-  // แก้ไข watched ของหนัง
-  function toggleWatched(id) {
-    setWatchlist(
-      watchlist.map(m =>
-        m.id === id
-          ? { ...m, watched: !m.watched }
-          : m
-      )
-    );
-  }
-
-  // แทรกหนังตรงตำแหน่งที่ต้องการ
-  function insertMovie(newMovie) {
-    const at = 1;
-
-    setWatchlist([
-      ...watchlist.slice(0, at),
-      newMovie,
-      ...watchlist.slice(at),
-    ]);
-  }
-
-  // เรียงตามปี
-  function sortByYear() {
-    const sorted = [...watchlist];
-    sorted.sort((a, b) => a.year - b.year);
-    setWatchlist(sorted);
-  }
+  const [watchlist] = useState([]);
 
   return (
     <div className="p-8 text-center">
@@ -60,7 +16,6 @@ function Home() {
         ยินดีต้อนรับสู่ MovieHub
       </p>
 
-      {/* ถ้าไม่มีหนังใน Watchlist */}
       {watchlist.length === 0 && (
         <p className="text-slate-400">
           ยังไม่มีหนังในลิสต์ ลองเพิ่มดูสิ
